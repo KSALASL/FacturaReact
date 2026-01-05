@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Factura }  from './App.jsx'
+import { InvoiceApp }  from './Components/InvoiceApp'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Factura />
+    <InvoiceApp />
   </StrictMode>,
 )
