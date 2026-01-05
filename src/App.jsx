@@ -1,4 +1,4 @@
-export const App = () => {
+export const Factura = () => {
 
   console.log('Hola mundo')
 
