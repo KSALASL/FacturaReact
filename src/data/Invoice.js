@@ -12,7 +12,7 @@ export const Invoice = {
     },
   },
   company: {
-    name: "Nombre Empresa",
+    name: "QA Soluciones S.A.S",
     nit: 8000000001,
   },
   items: [
