@@ -2,56 +2,73 @@ import { getInvoice } from "../Services/getInvoice";
 
 export const InvoiceApp = () => {
   const {
-    name: nameInvoice, 
-    id, 
+    name: nameInvoice,
+    id,
     client: {
-        name, 
-        lastName, 
-    address: {country, city, street, number}}, 
-    company: { name: nameCompany, nit}, 
-    items }= getInvoice();  
+      name,
+      lastName,
+      address: { country, city, street, number },
+    },
+    company: { name: nameCompany, nit },
+    items,
+  } = getInvoice();
 
   return (
     <>
-      <h1>{nameInvoice}</h1>
-      <ul>
-        <li>{ id }</li>
-      </ul>
+      <div className="container">
+        <div className="card my-3">
+          <div className="card-header">{nameInvoice}</div>
+          <div class="card-body">
+            <ul className="list-group">
+              <li className="list-group-item">{id}</li>
+            </ul>
+            <div className="row my-3">
+              <div className="col">
+                <h3>Datos del cliente</h3>
+                <ul className="list-group">
+                  <li className="list-group-item active">
+                    {name} {lastName}
+                  </li>
+                  <li className="list-group-item">
+                    {country} - {city}
+                  </li>
+                  <li className="list-group-item">
+                    {street} - {number}
+                  </li>
+                </ul>
+              </div>
 
-        <h3>Datos del cliente</h3>
-        <ul>
-            <li>{ name } { lastName }</li>
-            <li>{ country } - { city }</li>
-            <li>{ street } - { number }</li>
-        </ul>
+              <div className="col">
+                <h3>Datos de la empresa</h3>
+                <ul className="list-group">
+                  <li className="list-group-item active">{nameCompany}</li>
+                  <li className="list-group-item">{nit}</li>
+                </ul>
+              </div>
+            </div>
+            <h3>Productos de la factura</h3>
 
-        <h3>Datos de la empresa</h3>
-        <ul>
-            <li>{ nameCompany }</li>
-            <li>{ nit }</li>
-        </ul>
-
-        <h3>Productos de la factura</h3>
-        <table>
-            <thead>
+            <table className="table table-striped table-hover my-3">
+              <thead>
                 <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
                 </tr>
-            </thead>
-            <tbody>
-                { items.map(({name, price, quantity}) =>
-                    (
-                        <tr>                    
-                            <td>{ name }</td>
-                            <td>{ price }</td>
-                            <td>{ quantity }</td>    
-                        </tr>
-                    )
-                )}                
-            </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {items.map(({ name, price, quantity }) => (
+                  <tr>
+                    <td>{name}</td>
+                    <td>{price}</td>
+                    <td>{quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
